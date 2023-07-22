@@ -16,7 +16,7 @@ type GinEdgeRender struct {
 	Template edge.Template
 }
 
-// Default creates a RaymondRender instance with default options.
+// Default creates a GinEdgeRender instance with default options.
 func Default() *GinEdgeRender {
 	return &GinEdgeRender{
 		Edge: edge.Default(),
@@ -31,7 +31,7 @@ func New(config *edge.Config) *GinEdgeRender {
 
 func (r GinEdgeRender) Instance(name string, data any) render.Render {
 	var template edge.Template
-	filename := path.Join(r.Edge.BaseDirectory, name)
+	filename := path.Join(r.Edge.BaseDirectory, name+".edge")
 
 	// Always read template files from disk if in debug mode, use cache otherwise.
 	if gin.Mode() == "debug" {
